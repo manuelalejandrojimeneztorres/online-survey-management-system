@@ -1,6 +1,6 @@
-# Full stack example with Ionic + Express + Sequelize + MySQL
+# Full Stack Online Survey Management System with Ionic + Express + Sequelize + MySQL
 
-It's just that: A full stack example with Ionic + Express + Sequelize + MySQL
+It's just that: A full stack online survey management system with Ionic + Express + Sequelize + MySQL
 
 ## Getting Started
 
@@ -21,7 +21,7 @@ You need a working environment with:
 The best option to start with this project is cloning it in your PC:
 
 ```
-git clone https://github.com/tcrurav/BicyclesIonicExpressSequelize.git
+git clone https://github.com/manuelalejandrojimeneztorres/online-survey-management-system.git
 ```
 
 This project contains 2 different parts:
@@ -34,23 +34,23 @@ You need a node.js working environment. The LTS is recommended: https://nodejs.o
 Once you have cloned the project install all dependencies.
 
 ```
-cd Bicycles/frontend
+cd online-survey-management-system/frontend
 npm install
 
-cd Bicycles/backend
+cd online-survey-management-system/backend
 npm install
 ```
 
 - For your backend part:
 
-1. You need a Bicycles/backend/db.config.js file with the data for the connection to your MySQL Server:
+1. You need a online-survey-management-system/backend/db.config.js file with the data for the connection to your MySQL Server:
 
 ```
 module.exports = {
   HOST: "localhost",
   USER: "root",
-  PASSWORD: "your password",
-  DB: "db_bicycles",
+  PASSWORD: "your_super_strong_secret_password",
+  DB: "onlinesurveymanagementsystem",
   dialect: "mysql",
   pool: {
     max: 5,
@@ -63,17 +63,23 @@ module.exports = {
 
 2. You need a mysql server working.
 
-3. Create the mysql database, that in our case is "db_bicycles".
+3. Create the mysql database, that in our case is "onlinesurveymanagementsystem".
 
 Finally to start enjoying this project.
 
 ```
-cd Bicycles/backend
-node index.js
+cd online-survey-management-system/backend
+node app.js
 
-cd Bicycles/frontend
+cd online-survey-management-system/frontend
 ionic serve
 ```
+
+## Try it with Postman
+
+You can access the Online Survey Management System API documentation and test each of its endpoints at the following link:
+
+- [Online Survey Management System API documentation](https://www.postman.com/online-survey-management-system-api-team/online-survey-management-system-api/documentation/z14xj72/online-survey-management-system-api?workspaceId=710b6d14-ac82-47b4-a84e-ead823583acd) - The official API documentation
 
 Enjoy!!!
 
