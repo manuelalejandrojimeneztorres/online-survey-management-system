@@ -1,21 +1,28 @@
 ion-menu-button {
-    color: var(--ion-color-primary);
+  color: var(--ion-color-primary);
 }
 
 ion-item {
-    --highlight-color-focused: #3880ff;
-    --background-hover: rgba(56, 128, 255, 0.1);
-    --border-radius: 8px;
-  }
-  
-  ion-button {
-    --background: #3880ff;
-    --border-radius: 8px;
-    --box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.15);
-  }
-  
-  form {
+  margin-bottom: 16px;
+}
+
+ion-button {
+  margin-top: 20px;
+  --background: #3880ff;
+  --border-radius: 8px;
+}
+
+ion-select {
+  --padding-start: 10px;
+  --min-height: 50px;
+}
+
+ion-note {
+  font-style: italic;
+  font-size: 0.85rem;
+}
+
+/* form {
     max-width: 400px;
     margin: 0 auto;
-  }
-  
+} */

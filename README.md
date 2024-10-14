@@ -94,4 +94,5 @@ Enjoy!!!
 
 ## Acknowledgments
 
+- https://github.com/tcrurav. A great teacher whose motivation and knowledge have made this project possible.
 - https://gist.github.com/PurpleBooth/109311bb0361f32d87a2. A very complete template for README.md files.
