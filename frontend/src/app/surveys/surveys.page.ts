@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
-import { ActionSheetController } from '@ionic/angular';
+import { ActionSheetController, AlertController } from '@ionic/angular';
 
 import { SurveyService } from '../services/survey.service';
 
@@ -17,7 +17,7 @@ export class SurveysPage implements OnInit {
   // surveys: any = [];
   surveys: SurveyInterface[] = [];
 
-  constructor(private surveyService: SurveyService, private actionSheetController: ActionSheetController, private router: Router) { }
+  constructor(private surveyService: SurveyService, private actionSheetController: ActionSheetController, private alertController: AlertController, private router: Router) { }
 
   ngOnInit() {
     this.loadSurveys();
@@ -49,7 +49,7 @@ export class SurveysPage implements OnInit {
           icon: 'trash',
           role: 'destructive',
           handler: () => {
-            this.deleteSurvey(survey.id);
+            this.presentDeleteAlert(survey);
           },
         },
         {
@@ -68,6 +68,30 @@ export class SurveysPage implements OnInit {
 
   updateSurvey(id: any) {
     this.router.navigate(['/update-survey', id]);
+  }
+
+  async presentDeleteAlert(survey: SurveyInterface) {
+    const alert = await this.alertController.create({
+      header: 'Confirm Deletion',
+      message: `Are you sure you want to delete the survey <strong>${survey.name}</strong>?`,
+      buttons: [
+        {
+          text: 'Cancel',
+          role: 'cancel',
+          cssClass: 'secondary',
+          handler: () => {
+          },
+        },
+        {
+          text: 'Delete',
+          handler: () => {
+            this.deleteSurvey(survey.id);
+          },
+        },
+      ],
+    });
+
+    await alert.present();
   }
 
   deleteSurvey(id: any) {

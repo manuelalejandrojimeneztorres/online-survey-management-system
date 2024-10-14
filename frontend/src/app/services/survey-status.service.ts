@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
+import { Observable } from 'rxjs';
+
 import { SurveyStatusInterface } from '../interfaces/survey-status.interface';
 
 @Injectable({
@@ -12,8 +14,12 @@ export class SurveyStatusService {
 
   constructor(private httpClient: HttpClient) { }
 
-  getSurveyStatuses() {
-    return this.httpClient.get(this.surveyStatusesEndpoint);
+  /*   getSurveyStatuses() {
+      return this.httpClient.get(this.surveyStatusesEndpoint);
+    } */
+
+  getSurveyStatuses(): Observable<SurveyStatusInterface[]> {
+    return this.httpClient.get<SurveyStatusInterface[]>(this.surveyStatusesEndpoint);
   }
 
   createSurveyStatus(surveyStatus: any) {

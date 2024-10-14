@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
+import { Observable } from 'rxjs';
+
 import { QuestionTypeInterface } from '../interfaces/question-type.interface';
 
 @Injectable({
@@ -12,8 +14,12 @@ export class QuestionTypeService {
 
   constructor(private httpClient: HttpClient) { }
 
-  getQuestionTypes() {
-    return this.httpClient.get(this.questionTypesEndpoint);
+  /*   getQuestionTypes() {
+      return this.httpClient.get(this.questionTypesEndpoint);
+    } */
+
+  getQuestionTypes(): Observable<QuestionTypeInterface[]> {
+    return this.httpClient.get<QuestionTypeInterface[]>(this.questionTypesEndpoint);
   }
 
   createQuestionType(questionType: any) {
