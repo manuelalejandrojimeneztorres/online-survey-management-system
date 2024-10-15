@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { addIcons } from 'ionicons';
-import { create, ellipsisHorizontal, ellipsisVertical, helpCircle, personCircle, search, star } from 'ionicons/icons';
+import { create, ellipsisHorizontal, ellipsisVertical, helpCircle, personCircle, search, star, moon, sunny } from 'ionicons/icons';
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html',
@@ -16,12 +16,23 @@ export class AppComponent {
     { title: 'Coming soon', url: '/folder/spam', icon: 'warning' },
   ];
   public labels = ['Coming soon', 'Coming soon', 'Coming soon', 'Coming soon', 'Coming soon', 'Coming soon'];
+  public isDarkMode = false;
+  public darkModeIcon = 'moon';
   constructor() {
     /**
      * Any icons you want to use in your application
      * can be registered in app.component.ts and then
      * referenced by name anywhere in your application.
      */
-    addIcons({ create, ellipsisHorizontal, ellipsisVertical, helpCircle, personCircle, search, star });
+    addIcons({ create, ellipsisHorizontal, ellipsisVertical, helpCircle, personCircle, search, star, moon, sunny });
   }
+
+  toggleDarkMode() {
+    this.isDarkMode = !this.isDarkMode;
+
+    document.body.classList.toggle('dark-theme', this.isDarkMode);
+
+    this.darkModeIcon = this.isDarkMode ? 'sunny' : 'moon';
+  }
+
 }

@@ -33,7 +33,7 @@
           </ion-item>
         </ion-list>
       </ion-content>
-
+      
       <ion-footer>
         <ion-toolbar>
           <ion-buttons slot="start">
@@ -44,8 +44,8 @@
           </ion-buttons>
 
           <ion-buttons slot="end">
-            <ion-button>
-              <ion-icon slot="icon-only" ios="moon-outline" md="moon-sharp"></ion-icon>
+            <ion-button (click)="toggleDarkMode()">
+              <ion-icon [name]="darkModeIcon" slot="icon-only"></ion-icon>
             </ion-button>
             <ion-button>
               <ion-icon slot="icon-only" ios="power-outline" md="power-sharp"></ion-icon>
