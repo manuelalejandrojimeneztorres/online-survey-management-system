@@ -41,7 +41,7 @@
       <ion-card-content>
         <p>{{ survey.description }}</p>
         <p>Responses: Min. {{ survey.minResponses || 'N/A' }} - Max. {{ survey.maxResponses || 'N/A' }}</p>
-        <p>Status: {{ survey.surveyStatusID }}</p>
+        <p>Status: {{ survey.surveyStatusId }}</p>
 
         <ion-button fill="clear" (click)="presentActionSheet(survey)" slot="icon-only" class="action-sheet-btn">
           <ion-icon ios="ellipsis-horizontal-outline" md="ellipsis-vertical-sharp"></ion-icon>

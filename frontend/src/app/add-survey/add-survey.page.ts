@@ -21,7 +21,7 @@ export class AddSurveyPage implements OnInit {
       endDate: [''],
       minResponses: [''],
       maxResponses: [''],
-      surveyStatusID: ['', Validators.compose([Validators.required])]
+      surveyStatusId: ['', Validators.compose([Validators.required])]
     })
   }
 

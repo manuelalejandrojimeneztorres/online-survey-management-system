@@ -5,7 +5,7 @@ const Op = db.Sequelize.Op;
 // Create and Save a new Survey
 exports.create = (req, res) => {
     // Validate request
-    if (!req.body.name || !req.body.description || !req.body.startDate || !req.body.surveyStatusID) {
+    if (!req.body.name || !req.body.description || !req.body.startDate || !req.body.surveyStatusId) {
         res.status(400).send({
             message: 'Content can not be empty.'
         });
@@ -21,7 +21,7 @@ exports.create = (req, res) => {
         endDate: req.body.endDate,
         minResponses: req.body.minResponses,
         maxResponses: req.body.maxResponses,
-        surveyStatusID: req.body.surveyStatusID
+        surveyStatusId: req.body.surveyStatusId
     };
 
     // Save Survey in the database

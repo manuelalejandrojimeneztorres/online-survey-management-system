@@ -6,7 +6,7 @@ export interface SurveyInterface {
     endDate?: string;
     minResponses?: number;
     maxResponses?: number;
-    surveyStatusID: number;
+    surveyStatusId: number;
     createdAt?: string;
     updatedAt?: string;
 }

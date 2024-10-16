@@ -23,7 +23,7 @@ export class UpdateSurveyPage implements OnInit {
       endDate: [''],
       minResponses: [''],
       maxResponses: [''],
-      surveyStatusID: ['', Validators.compose([Validators.required])]
+      surveyStatusId: ['', Validators.compose([Validators.required])]
     })
   }
 
@@ -41,7 +41,7 @@ export class UpdateSurveyPage implements OnInit {
         endDate: response.endDate,
         minResponses: response.minResponses,
         maxResponses: response.maxResponses,
-        surveyStatusID: response.surveyStatusID
+        surveyStatusId: response.surveyStatusId
       });
     });
   }

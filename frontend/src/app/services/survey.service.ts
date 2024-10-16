@@ -34,7 +34,7 @@ export class SurveyService {
     body.append("endDate", survey.endDate);
     body.append("minResponses", survey.minResponses);
     body.append("maxResponses", survey.maxResponses);
-    body.append("surveyStatusID", survey.surveyStatusID);
+    body.append("surveyStatusId", survey.surveyStatusId);
 
     return this.httpClient.post(this.surveysEndpoint, body.toString(), { headers });
   }
@@ -59,7 +59,7 @@ export class SurveyService {
     body.append("endDate", survey.endDate);
     body.append("minResponses", survey.minResponses);
     body.append("maxResponses", survey.maxResponses);
-    body.append("surveyStatusID", survey.surveyStatusID);
+    body.append("surveyStatusId", survey.surveyStatusId);
 
     return this.httpClient.put(`${this.surveysEndpoint}/${id}`, body.toString(), { headers });
   }

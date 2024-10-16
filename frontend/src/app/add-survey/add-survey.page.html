@@ -74,10 +74,10 @@
 
     <ion-item>
       <ion-label position="floating">Survey Status ID</ion-label>
-      <ion-input formControlName="surveyStatusID" type="number" placeholder="Enter survey status ID"></ion-input>
+      <ion-input formControlName="surveyStatusId" type="number" placeholder="Enter survey status ID"></ion-input>
     </ion-item>
     <ion-note color="danger"
-      *ngIf="getFormControl('surveyStatusID')?.hasError('required') && getFormControl('surveyStatusID')?.touched">
+      *ngIf="getFormControl('surveyStatusId')?.hasError('required') && getFormControl('surveyStatusId')?.touched">
       The survey status ID is required.
     </ion-note>
 
