@@ -77,7 +77,7 @@ ionic serve
 
 ## Try it with Postman
 
-You can access the Online Survey Management System API documentation and test each of its endpoints at the following link:
+You can access the comprehensive Online Survey Management System API documentation and test its endpoints at the link below:
 
 - [Online Survey Management System API documentation](https://www.postman.com/online-survey-management-system-api-team/online-survey-management-system-api/documentation/z14xj72/online-survey-management-system-api?workspaceId=710b6d14-ac82-47b4-a84e-ead823583acd) - The official API documentation
 
@@ -94,5 +94,5 @@ Enjoy!!!
 
 ## Acknowledgments
 
-- https://github.com/tcrurav. A great teacher whose motivation and knowledge have made this project possible.
+- https://github.com/tcrurav. An outstanding mentor whose expertise and guidance were instrumental in making this project a reality.
 - https://gist.github.com/PurpleBooth/109311bb0361f32d87a2. A very complete template for README.md files.
