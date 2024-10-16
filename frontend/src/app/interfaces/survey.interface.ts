@@ -2,11 +2,11 @@ export interface SurveyInterface {
     id?: number;
     name: string;
     description: string;
-    startDate: string;
-    endDate?: string;
+    startDate: Date;
+    endDate?: Date;
     minResponses?: number;
     maxResponses?: number;
     surveyStatusId: number;
-    createdAt?: string;
-    updatedAt?: string;
+    createdAt?: Date;
+    updatedAt?: Date;
 }
