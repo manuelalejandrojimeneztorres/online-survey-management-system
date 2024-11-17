@@ -10,12 +10,12 @@ A **full stack hybrid multiplatform application** designed for comprehensive **o
 2. [Features](#features)
 3. [Prerequisites](#prerequisites)
 4. [Installation](#installation)
-   - [Project Setup](#project-setup)
-   - [Backend Setup](#backend-setup)
-   - [Frontend Setup](#frontend-setup)
+   - [Project Setup](#1-project-setup)
+   - [Backend Setup](#2-backend-setup)
+   - [Frontend Setup](#3-frontend-setup)
 5. [Usage](#usage)
 6. [API Documentation](#api-documentation)
-7. [Built With](#built-with)
+7. [Built With](#built-with-tools-and-technologies)
 8. [License](#license)
 9. [Acknowledgments](#acknowledgments)
 
@@ -138,11 +138,11 @@ Ensure the following tools are installed on your system:
 
 ---
 
-## API Documentation OJO OJO OJO OJO OJO
+## API Documentation
 
 The API documentation is hosted on **Postman** for detailed endpoint specifications:
 
-- [Online Survey Management System API Documentation](https://www.postman.com/online-survey-management-system-api-team/online-survey-management-system-api/documentation/z14xj72/online-survey-management-system-api?workspaceId=710b6d14-ac82-47b4-a84e-ead823583acd)
+- [Online Survey Management System API Documentation](https://www.postman.com/online-survey-management-system-api-team/online-survey-management-system-api)
 
 [🔼 Back to Top](#table-of-contents)
 
@@ -189,7 +189,7 @@ This project is licensed under the **MIT License**. See the [LICENSE](LICENSE) f
 
 ## Acknowledgments
 
-- **[Tiburcio Cruz Ravelo](https://github.com/tcrurav):** For his invaluable mentorship, support and expertise throughout this project.
+- **[Tiburcio Cruz Ravelo](https://github.com/tcrurav):** For his invaluable mentorship, support, and expertise throughout this project.
 - **[PurpleBooth](https://github.com/PurpleBooth):** For providing the [original README template](https://gist.github.com/PurpleBooth/109311bb0361f32d87a2) that inspired this documentation.
 - **[Ionic Team](https://github.com/ionic-team):** For their exceptional hybrid app framework.
 
@@ -197,6 +197,6 @@ This project is licensed under the **MIT License**. See the [LICENSE](LICENSE) f
 
 ---
 
-Enjoy using the **Online Survey Management System** and feel free to contribute! 🎉
+Enjoy using the **Online Survey Management System** and feel free to contribute! 🎉🚀📊
 
 [🔼 Back to Top](#table-of-contents)
