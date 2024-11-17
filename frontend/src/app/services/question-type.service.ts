@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 import { Observable } from 'rxjs';
-
 import { QuestionTypeInterface } from '../interfaces/question-type.interface';
 
 @Injectable({
@@ -14,18 +13,21 @@ export class QuestionTypeService {
 
   constructor(private httpClient: HttpClient) { }
 
-  /*   getQuestionTypes() {
-      return this.httpClient.get(this.questionTypesEndpoint);
-    } */
-
-  getQuestionTypes(): Observable<QuestionTypeInterface[]> {
-    return this.httpClient.get<QuestionTypeInterface[]>(this.questionTypesEndpoint);
+  private getAuthHeaders(token: string): HttpHeaders {
+    return new HttpHeaders({
+      'Content-Type': 'application/x-www-form-urlencoded',
+      'Authorization': `Bearer ${token}`
+    });
   }
 
-  createQuestionType(questionType: any) {
-    const headers = new HttpHeaders({
-      'Content-Type': 'application/x-www-form-urlencoded'
-    });
+  getQuestionTypes(token: string): Observable<QuestionTypeInterface[]> {
+    const headers = this.getAuthHeaders(token);
+
+    return this.httpClient.get<QuestionTypeInterface[]>(this.questionTypesEndpoint, { headers });
+  }
+
+  createQuestionType(questionType: any, token: string) {
+    const headers = this.getAuthHeaders(token);
 
     const body = new URLSearchParams();
     body.append("type", questionType.type);
@@ -33,18 +35,20 @@ export class QuestionTypeService {
     return this.httpClient.post(this.questionTypesEndpoint, body.toString(), { headers });
   }
 
-  deleteQuestionType(id: any) {
-    return this.httpClient.delete(`${this.questionTypesEndpoint}/${id}`);
+  deleteQuestionType(id: any, token: string) {
+    const headers = this.getAuthHeaders(token);
+
+    return this.httpClient.delete(`${this.questionTypesEndpoint}/${id}`, { headers });
   }
 
-  getQuestionTypeById(id: any) {
-    return this.httpClient.get<QuestionTypeInterface>(`${this.questionTypesEndpoint}/${id}`);
+  getQuestionTypeById(id: any, token: string) {
+    const headers = this.getAuthHeaders(token);
+
+    return this.httpClient.get<QuestionTypeInterface>(`${this.questionTypesEndpoint}/${id}`, { headers });
   }
 
-  updateQuestionType(id: any, questionType: any) {
-    const headers = new HttpHeaders({
-      'Content-Type': 'application/x-www-form-urlencoded'
-    });
+  updateQuestionType(id: any, questionType: any, token: string) {
+    const headers = this.getAuthHeaders(token);
 
     const body = new URLSearchParams();
     body.append("type", questionType.type);

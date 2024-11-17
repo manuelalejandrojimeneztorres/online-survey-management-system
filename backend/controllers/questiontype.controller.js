@@ -1,5 +1,5 @@
 const db = require('../models');
-const QuestionType = db.questiontypes;
+const QuestionType = db.questiontype;
 const Op = db.Sequelize.Op;
 
 // Create and Save a new QuestionType
@@ -15,7 +15,8 @@ exports.create = (req, res) => {
 
     // Create a QuestionType
     const questionType = {
-        type: req.body.type
+        type: req.body.type,
+        createdAt: new Date()
     };
 
     // Save QuestionType in the database
@@ -69,6 +70,9 @@ exports.findOne = (req, res) => {
 // Update a QuestionType by the id in the request
 exports.update = (req, res) => {
     const id = req.params.id;
+
+    // Update updatedAt with current date and time only when the user is updated
+    req.body.updatedAt = new Date();
 
     QuestionType.update(req.body, {
         where: { id: id }

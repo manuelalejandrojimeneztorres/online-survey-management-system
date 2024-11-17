@@ -1,5 +1,5 @@
 const db = require('../models');
-const Survey = db.surveys;
+const Survey = db.survey;
 const Op = db.Sequelize.Op;
 
 // Create and Save a new Survey
@@ -21,7 +21,8 @@ exports.create = (req, res) => {
         endDate: req.body.endDate,
         minResponses: req.body.minResponses,
         maxResponses: req.body.maxResponses,
-        surveyStatusId: req.body.surveyStatusId
+        surveyStatusId: req.body.surveyStatusId,
+        createdAt: new Date()
     };
 
     // Save Survey in the database
@@ -51,6 +52,21 @@ exports.findAll = (req, res) => {
         });
 };
 
+// Retrieve all Survey from the database
+exports.findAllBySurveyStatusId = (req, res) => {
+    const id = req.params.id;
+
+    Survey.findAll({ where: { surveyStatusId: id } })
+        .then(data => {
+            res.send(data);
+        })
+        .catch(err => {
+            res.status(500).send({
+                message: err.message || 'Some error occurred while retrieving Survey.'
+            });
+        });
+};
+
 // Find a single Survey with an id
 exports.findOne = (req, res) => {
     const id = req.params.id;
@@ -75,6 +91,9 @@ exports.findOne = (req, res) => {
 // Update a Survey by the id in the request
 exports.update = (req, res) => {
     const id = req.params.id;
+
+    // Update updatedAt with current date and time only when the user is updated
+    req.body.updatedAt = new Date();
 
     Survey.update(req.body, {
         where: { id: id }

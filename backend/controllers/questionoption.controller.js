@@ -1,11 +1,11 @@
 const db = require('../models');
-const QuestionOption = db.questionoptions;
+const QuestionOption = db.questionoption;
 const Op = db.Sequelize.Op;
 
 // Create and Save a new QuestionOption
 exports.create = (req, res) => {
     // Validate request
-    if (!req.body.questionID || !req.body.order || !req.body.value) {
+    if (!req.body.questionId || !req.body.order || !req.body.value) {
         res.status(400).send({
             message: 'Content can not be empty.'
         });
@@ -15,9 +15,10 @@ exports.create = (req, res) => {
 
     // Create a QuestionOption
     const questionOption = {
-        questionID: req.body.questionID,
+        questionId: req.body.questionId,
         order: req.body.order,
-        value: req.body.value
+        value: req.body.value,
+        createdAt: new Date()
     };
 
     // Save QuestionOption in the database
@@ -47,6 +48,21 @@ exports.findAll = (req, res) => {
         });
 };
 
+// Retrieve all QuestionOption from the database
+exports.findAllByQuestionId = (req, res) => {
+    const id = req.params.id;
+
+    QuestionOption.findAll({ where: { questionId: id } })
+        .then(data => {
+            res.send(data);
+        })
+        .catch(err => {
+            res.status(500).send({
+                message: err.message || 'Some error occurred while retrieving QuestionOption.'
+            });
+        });
+};
+
 // Find a single QuestionOption with an id
 exports.findOne = (req, res) => {
     const id = req.params.id;
@@ -71,6 +87,9 @@ exports.findOne = (req, res) => {
 // Update a QuestionOption by the id in the request
 exports.update = (req, res) => {
     const id = req.params.id;
+
+    // Update updatedAt with current date and time only when the user is updated
+    req.body.updatedAt = new Date();
 
     QuestionOption.update(req.body, {
         where: { id: id }

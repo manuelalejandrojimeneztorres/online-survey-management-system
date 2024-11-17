@@ -1,11 +1,11 @@
 const db = require('../models');
-const Question = db.questions;
+const Question = db.question;
 const Op = db.Sequelize.Op;
 
 // Create and Save a new Question
 exports.create = (req, res) => {
     // Validate request
-    if (!req.body.surveyID || !req.body.questionTypeID || !req.body.order || !req.body.text || !req.body.isMandatory) {
+    if (!req.body.surveyId || !req.body.questionTypeId || !req.body.order || !req.body.text || !req.body.isMandatory) {
         res.status(400).send({
             message: 'Content can not be empty.'
         });
@@ -15,11 +15,12 @@ exports.create = (req, res) => {
 
     // Create a Question
     const question = {
-        surveyID: req.body.surveyID,
-        questionTypeID: req.body.questionTypeID,
+        surveyId: req.body.surveyId,
+        questionTypeId: req.body.questionTypeId,
         order: req.body.order,
         text: req.body.text,
-        isMandatory: req.body.isMandatory
+        isMandatory: req.body.isMandatory,
+        createdAt: new Date()
     };
 
     // Save Question in the database
@@ -49,6 +50,36 @@ exports.findAll = (req, res) => {
         });
 };
 
+// Retrieve all Question from the database
+exports.findAllBySurveyId = (req, res) => {
+    const id = req.params.id;
+
+    Question.findAll({ where: { surveyId: id } })
+        .then(data => {
+            res.send(data);
+        })
+        .catch(err => {
+            res.status(500).send({
+                message: err.message || 'Some error occurred while retrieving Question.'
+            });
+        });
+};
+
+// Retrieve all Question from the database
+exports.findAllByQuestionTypeId = (req, res) => {
+    const id = req.params.id;
+
+    Question.findAll({ where: { questionTypeId: id } })
+        .then(data => {
+            res.send(data);
+        })
+        .catch(err => {
+            res.status(500).send({
+                message: err.message || 'Some error occurred while retrieving Question.'
+            });
+        });
+};
+
 // Find a single Question with an id
 exports.findOne = (req, res) => {
     const id = req.params.id;
@@ -73,6 +104,9 @@ exports.findOne = (req, res) => {
 // Update a Question by the id in the request
 exports.update = (req, res) => {
     const id = req.params.id;
+
+    // Update updatedAt with current date and time only when the user is updated
+    req.body.updatedAt = new Date();
 
     Question.update(req.body, {
         where: { id: id }

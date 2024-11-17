@@ -4,60 +4,96 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'dashboard',
+    redirectTo: 'signin',
     pathMatch: 'full'
   },
   {
     path: 'folder/:id',
-    loadChildren: () => import('./folder/folder.module').then(m => m.FolderPageModule)
+    loadChildren: () => import('./pages/folder/folder.module').then(m => m.FolderPageModule)
   },
   {
     path: 'dashboard',
-    loadChildren: () => import('./dashboard/dashboard.module').then(m => m.DashboardPageModule)
+    loadChildren: () => import('./pages/dashboard/dashboard.module').then(m => m.DashboardPageModule)
   },
   {
     path: 'survey-statuses',
-    loadChildren: () => import('./survey-statuses/survey-statuses.module').then(m => m.SurveyStatusesPageModule)
+    loadChildren: () => import('./pages/survey-statuses/survey-statuses.module').then(m => m.SurveyStatusesPageModule)
   },
   {
     path: 'add-survey-status',
-    loadChildren: () => import('./add-survey-status/add-survey-status.module').then(m => m.AddSurveyStatusPageModule)
+    loadChildren: () => import('./pages/add-survey-status/add-survey-status.module').then(m => m.AddSurveyStatusPageModule)
   },
   {
     path: 'update-survey-status/:id',
-    loadChildren: () => import('./update-survey-status/update-survey-status.module').then(m => m.UpdateSurveyStatusPageModule)
+    loadChildren: () => import('./pages/update-survey-status/update-survey-status.module').then(m => m.UpdateSurveyStatusPageModule)
   },
   {
     path: 'surveys',
-    loadChildren: () => import('./surveys/surveys.module').then(m => m.SurveysPageModule)
+    loadChildren: () => import('./pages/surveys/surveys.module').then(m => m.SurveysPageModule)
   },
   {
     path: 'add-survey',
-    loadChildren: () => import('./add-survey/add-survey.module').then(m => m.AddSurveyPageModule)
+    loadChildren: () => import('./pages/add-survey/add-survey.module').then(m => m.AddSurveyPageModule)
   },
   {
     path: 'update-survey/:id',
-    loadChildren: () => import('./update-survey/update-survey.module').then(m => m.UpdateSurveyPageModule)
+    loadChildren: () => import('./pages/update-survey/update-survey.module').then(m => m.UpdateSurveyPageModule)
   },
   {
     path: 'question-types',
-    loadChildren: () => import('./question-types/question-types.module').then(m => m.QuestionTypesPageModule)
+    loadChildren: () => import('./pages/question-types/question-types.module').then(m => m.QuestionTypesPageModule)
   },
   {
     path: 'add-question-type',
-    loadChildren: () => import('./add-question-type/add-question-type.module').then(m => m.AddQuestionTypePageModule)
+    loadChildren: () => import('./pages/add-question-type/add-question-type.module').then(m => m.AddQuestionTypePageModule)
   },
   {
     path: 'update-question-type/:id',
-    loadChildren: () => import('./update-question-type/update-question-type.module').then(m => m.UpdateQuestionTypePageModule)
+    loadChildren: () => import('./pages/update-question-type/update-question-type.module').then(m => m.UpdateQuestionTypePageModule)
   },
   {
     path: 'questions',
-    loadChildren: () => import('./questions/questions.module').then(m => m.QuestionsPageModule)
+    loadChildren: () => import('./pages/questions/questions.module').then(m => m.QuestionsPageModule)
+  },
+  {
+    path: 'add-question',
+    loadChildren: () => import('./pages/add-question/add-question.module').then(m => m.AddQuestionPageModule)
+  },
+  {
+    path: 'update-question/:id',
+    loadChildren: () => import('./pages/update-question/update-question.module').then(m => m.UpdateQuestionPageModule)
   },
   {
     path: 'question-options',
-    loadChildren: () => import('./question-options/question-options.module').then(m => m.QuestionOptionsPageModule)
+    loadChildren: () => import('./pages/question-options/question-options.module').then(m => m.QuestionOptionsPageModule)
+  },
+  {
+    path: 'add-question-option',
+    loadChildren: () => import('./pages/add-question-option/add-question-option.module').then(m => m.AddQuestionOptionPageModule)
+  },
+  {
+    path: 'update-question-option/:id',
+    loadChildren: () => import('./pages/update-question-option/update-question-option.module').then(m => m.UpdateQuestionOptionPageModule)
+  },
+  {
+    path: 'system-users',
+    loadChildren: () => import('./pages/system-users/system-users.module').then(m => m.SystemUsersPageModule)
+  },
+  {
+    path: 'add-system-user',
+    loadChildren: () => import('./pages/add-system-user/add-system-user.module').then(m => m.AddSystemUserPageModule)
+  },
+  {
+    path: 'update-system-user/:id',
+    loadChildren: () => import('./pages/update-system-user/update-system-user.module').then(m => m.UpdateSystemUserPageModule)
+  },
+  {
+    path: 'signup',
+    loadChildren: () => import('./pages/signup/signup.module').then(m => m.SignupPageModule)
+  },
+  {
+    path: 'signin',
+    loadChildren: () => import('./pages/signin/signin.module').then(m => m.SigninPageModule)
   }
 ];
 
@@ -67,4 +103,4 @@ const routes: Routes = [
   ],
   exports: [RouterModule]
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }

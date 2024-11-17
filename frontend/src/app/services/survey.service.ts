@@ -14,18 +14,21 @@ export class SurveyService {
 
   constructor(private httpClient: HttpClient) { }
 
-  /*   getSurveys() {
-      return this.httpClient.get(this.surveysEndpoint);
-    } */
-
-  getSurveys(): Observable<SurveyInterface[]> {
-    return this.httpClient.get<SurveyInterface[]>(this.surveysEndpoint);
+  private getAuthHeaders(token: string): HttpHeaders {
+    return new HttpHeaders({
+      'Content-Type': 'application/x-www-form-urlencoded',
+      'Authorization': `Bearer ${token}`
+    });
   }
 
-  createSurvey(survey: any) {
-    const headers = new HttpHeaders({
-      'Content-Type': 'application/x-www-form-urlencoded'
-    });
+  getSurveys(token: string): Observable<SurveyInterface[]> {
+    const headers = this.getAuthHeaders(token);
+
+    return this.httpClient.get<SurveyInterface[]>(this.surveysEndpoint, { headers });
+  }
+
+  createSurvey(survey: any, token: string) {
+    const headers = this.getAuthHeaders(token);
 
     const body = new URLSearchParams();
     body.append("name", survey.name);
@@ -39,18 +42,20 @@ export class SurveyService {
     return this.httpClient.post(this.surveysEndpoint, body.toString(), { headers });
   }
 
-  deleteSurvey(id: any) {
-    return this.httpClient.delete(`${this.surveysEndpoint}/${id}`);
+  deleteSurvey(id: any, token: string) {
+    const headers = this.getAuthHeaders(token);
+
+    return this.httpClient.delete(`${this.surveysEndpoint}/${id}`, { headers });
   }
 
-  getSurveyById(id: any) {
-    return this.httpClient.get<SurveyInterface>(`${this.surveysEndpoint}/${id}`);
+  getSurveyById(id: any, token: string) {
+    const headers = this.getAuthHeaders(token);
+
+    return this.httpClient.get<SurveyInterface>(`${this.surveysEndpoint}/${id}`, { headers });
   }
 
-  updateSurvey(id: any, survey: any) {
-    const headers = new HttpHeaders({
-      'Content-Type': 'application/x-www-form-urlencoded'
-    });
+  updateSurvey(id: any, survey: any, token: string) {
+    const headers = this.getAuthHeaders(token);
 
     const body = new URLSearchParams();
     body.append("name", survey.name);

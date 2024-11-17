@@ -1,5 +1,5 @@
 const db = require('../models');
-const SurveyStatus = db.surveystatuses;
+const SurveyStatus = db.surveystatus;
 const Op = db.Sequelize.Op;
 
 // Create and Save a new SurveyStatus
@@ -15,7 +15,8 @@ exports.create = (req, res) => {
 
     // Create a SurveyStatus
     const surveyStatus = {
-        status: req.body.status
+        status: req.body.status,
+        createdAt: new Date()
     };
 
     // Save SurveyStatus in the database
@@ -69,6 +70,9 @@ exports.findOne = (req, res) => {
 // Update a SurveyStatus by the id in the request
 exports.update = (req, res) => {
     const id = req.params.id;
+
+    // Update updatedAt with current date and time only when the user is updated
+    req.body.updatedAt = new Date();
 
     SurveyStatus.update(req.body, {
         where: { id: id }

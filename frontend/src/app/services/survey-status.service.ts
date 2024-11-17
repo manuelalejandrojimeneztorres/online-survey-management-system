@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 import { Observable } from 'rxjs';
-
 import { SurveyStatusInterface } from '../interfaces/survey-status.interface';
 
 @Injectable({
@@ -14,18 +13,21 @@ export class SurveyStatusService {
 
   constructor(private httpClient: HttpClient) { }
 
-  /*   getSurveyStatuses() {
-      return this.httpClient.get(this.surveyStatusesEndpoint);
-    } */
-
-  getSurveyStatuses(): Observable<SurveyStatusInterface[]> {
-    return this.httpClient.get<SurveyStatusInterface[]>(this.surveyStatusesEndpoint);
+  private getAuthHeaders(token: string): HttpHeaders {
+    return new HttpHeaders({
+      'Content-Type': 'application/x-www-form-urlencoded',
+      'Authorization': `Bearer ${token}`
+    });
   }
 
-  createSurveyStatus(surveyStatus: any) {
-    const headers = new HttpHeaders({
-      'Content-Type': 'application/x-www-form-urlencoded'
-    });
+  getSurveyStatuses(token: string): Observable<SurveyStatusInterface[]> {
+    const headers = this.getAuthHeaders(token);
+
+    return this.httpClient.get<SurveyStatusInterface[]>(this.surveyStatusesEndpoint, { headers });
+  }
+
+  createSurveyStatus(surveyStatus: any, token: string) {
+    const headers = this.getAuthHeaders(token);
 
     const body = new URLSearchParams();
     body.append("status", surveyStatus.status);
@@ -33,18 +35,20 @@ export class SurveyStatusService {
     return this.httpClient.post(this.surveyStatusesEndpoint, body.toString(), { headers });
   }
 
-  deleteSurveyStatus(id: any) {
-    return this.httpClient.delete(`${this.surveyStatusesEndpoint}/${id}`);
+  deleteSurveyStatus(id: any, token: string) {
+    const headers = this.getAuthHeaders(token);
+
+    return this.httpClient.delete(`${this.surveyStatusesEndpoint}/${id}`, { headers });
   }
 
-  getSurveyStatusById(id: any) {
-    return this.httpClient.get<SurveyStatusInterface>(`${this.surveyStatusesEndpoint}/${id}`);
+  getSurveyStatusById(id: any, token: string) {
+    const headers = this.getAuthHeaders(token);
+
+    return this.httpClient.get<SurveyStatusInterface>(`${this.surveyStatusesEndpoint}/${id}`, { headers });
   }
 
-  updateSurveyStatus(id: any, surveyStatus: any) {
-    const headers = new HttpHeaders({
-      'Content-Type': 'application/x-www-form-urlencoded'
-    });
+  updateSurveyStatus(id: any, surveyStatus: any, token: string) {
+    const headers = this.getAuthHeaders(token);
 
     const body = new URLSearchParams();
     body.append("status", surveyStatus.status);
