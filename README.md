@@ -15,7 +15,7 @@ A **full stack hybrid multiplatform application** designed for comprehensive **o
    - [Frontend Setup](#3-frontend-setup)
 5. [Usage](#usage)
 6. [API Documentation](#api-documentation)
-7. [Built With](#built-with-tools-and-technologies)
+7. [Built With (Tools and Technologies)](#built-with-tools-and-technologies)
 8. [License](#license)
 9. [Acknowledgments](#acknowledgments)
 
